@@ -8,8 +8,10 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import org.springframework.stereotype.Service;
 
@@ -31,7 +33,16 @@ public class CursoJersey {
     public List<CursoDto> getAllCursos() {
         return cursoService.getCursos();
     }
+
+    @GET
+    @Consumes("application/json")
+    @Produces("application/json")
+    @Path("/{id}")
+    public CursoDto getCurso(@PathParam("id") Integer id) {
+        return cursoService.getCurso(id);
+    }
     
+
 //    @GET
 //    @Path("/pagination")
 //    @Produces("application/json")
@@ -44,11 +55,11 @@ public class CursoJersey {
     @POST
     @Consumes("application/json")
     public Response createUser(CursoDto cursoDto) throws URISyntaxException {
-    	@SuppressWarnings("unused")
-		int result = cursoService.createCurso(cursoDto);
-    	URI uri = new URI("http://localhost:8080/curso/" );
+		CursoDto newCursoDto = cursoService.createCurso(cursoDto);
+    	
+    	URI uri = new URI("http://localhost:8080/curso/" + newCursoDto.getId());
 
-   		return Response.status(201).contentLocation(uri).build();
+   		return Response.status(Status.CREATED).contentLocation(uri).build();
     }
     
 

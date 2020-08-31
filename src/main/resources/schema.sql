@@ -20,4 +20,6 @@ create table curso
    CONSTRAINT fk_curso_profesor foreign key (profesorId) references profesor(id)
 );
 
+CREATE UNIQUE INDEX UK_TITULO_CURSO_TABLE ON CURSO(TITULO);
+
 

@@ -19,7 +19,10 @@ public interface CursoMyBatisRepository {
 
 	@Select("SELECT * FROM curso WHERE activo = #{activo} order by upper(titulo)")
 	public List<Curso> findByActivo(Boolean activo);
-	
+
+	@Select("SELECT * FROM curso WHERE titulo = #{titulo}")
+	public Curso findByTitulo(String titulo);
+
 	@Insert("INSERT INTO curso(id, numHoras, titulo, nivel, profesorId, activo) VALUES (#{id}, #{numHoras}, #{titulo}, #{nivel}, #{profesorId}, #{activo})")
 	public int insert(Curso curso);
 }

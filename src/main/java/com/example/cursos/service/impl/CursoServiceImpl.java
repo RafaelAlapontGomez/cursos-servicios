@@ -32,10 +32,22 @@ public class CursoServiceImpl implements CursoService {
 		return cursosDto;
 	}
 
-	public int createCurso(CursoDto cursoDto) {
+	public CursoDto createCurso(CursoDto cursoDto) {
 		int result = cursoMyBatisRepository.insert(mapperCursoDtoToCurso(cursoDto));
-		return result;
+		CursoDto newCursoDto = null;
+		if (result == 1) {
+			Curso curso = cursoMyBatisRepository.findByTitulo(cursoDto.getTitulo());
+			newCursoDto = mapperCursoToCursoDto(curso);
+		}
+		return newCursoDto;
 	}
+
+	@Override
+	public CursoDto getCurso(Integer id) {
+		Curso curso = cursoMyBatisRepository.findById(id);
+		return  mapperCursoToCursoDto(curso);
+	}
+
 
 //	@Override
 //	public List<CursoDto> getCursosPagination(Integer pageNumber, Integer pageSize) {
