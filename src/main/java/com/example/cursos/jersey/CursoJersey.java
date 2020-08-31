@@ -32,6 +32,15 @@ public class CursoJersey {
         return cursoService.getCursos();
     }
     
+//    @GET
+//    @Path("/pagination")
+//    @Produces("application/json")
+//    public List<CursoDto> getAllCursosPagination(
+//    		@RequestParam(required = false, name = "pageNumber") Integer pageNumber,
+//    		@RequestParam(required = false, name = "pageSize")  Integer pageSize) {
+//        return cursoService.getCursosPagination(pageNumber, pageSize);
+//    }
+    
     @POST
     @Consumes("application/json")
     public Response createUser(CursoDto cursoDto) throws URISyntaxException {

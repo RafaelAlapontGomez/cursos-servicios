@@ -21,14 +21,14 @@ public class CursoMapperTest {
     public void findAllTest() {
     	List<Curso> cursos = repository.findAll();
     	assertNotNull(cursos);
-    	assertTrue(cursos.size() == 3);
+    	assertTrue(cursos.size() == 9);
     }
     
     @Test
     public void findByActivoTest() {
     	List<Curso> cursos = repository.findByActivo(true);
     	assertNotNull(cursos);
-    	assertTrue(cursos.size() == 2);
+    	assertTrue(cursos.size() == 7);
     }
     
     @Test

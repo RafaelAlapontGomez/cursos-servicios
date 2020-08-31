@@ -36,7 +36,14 @@ public class CursoServiceImpl implements CursoService {
 		int result = cursoMyBatisRepository.insert(mapperCursoDtoToCurso(cursoDto));
 		return result;
 	}
+
+//	@Override
+//	public List<CursoDto> getCursosPagination(Integer pageNumber, Integer pageSize) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 	
+
 	private CursoDto mapperCursoToCursoDto(Curso curso) {
 		Profesor profesor = profesorMyBatisRepository.findById(curso.getProfesorId());
 		
@@ -61,6 +68,6 @@ public class CursoServiceImpl implements CursoService {
 				.titulo(cursoDto.getTitulo())
 				.build();
 	}
-	
+
 
 }
